@@ -1,5 +1,12 @@
 $target = read-host -Prompt 'Input target name'
 if ($target) {
+    Write-Host "Checking if $target is online."
+    if($?){
+        Test-NetConnection -ComputerName $target
+    }
+    else {
+        Write-Host "$target appears to be offline."   
+    }
     Write-Host "Activating winrm.cmd"
     if($?)
     {
@@ -19,7 +26,6 @@ Write-Host "Attempting to update group policy remotely on [$target]"
 if($?)
 {
         Invoke-GPUpdate -Computer $target
-        Write-Host "Update succesful"
 }
 else {
     Write-Host "GPUpdate failed"
@@ -27,7 +33,7 @@ else {
 Write-Host "Disabling Winrm.cmd"
 if($?)
 {
-    Invoke-Command -ComputerName $target -ScriptBlock {set-service WinRM -StartupTpye Disabled; Stop-Service WinRM 2>&1>$null}
+    Invoke-Command -ComputerName $target -ScriptBlock {set-service WinRM -StartupType Disabled; Stop-Service WinRM}
 }
 else {
     Write-Host "Unable to deactivate Remote access"

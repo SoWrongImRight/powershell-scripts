@@ -1,5 +1,12 @@
 $target = read-host -Prompt 'Input target name'
 if ($target) {
+    Write-Host "Checking if $target is online."
+    if($?){
+        Test-NetConnection -ComputerName $target
+    }
+    else {
+        Write-Host "$target appears to be offline."   
+    }
     Write-Host "Activating winrm.cmd"
     if($?)
     {
