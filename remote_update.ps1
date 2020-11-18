@@ -33,7 +33,7 @@ else {
 Write-Host "Attempting to update group policy remotely on [$target]"
 if($?)
 {
-        Invoke-GPUpdate -Computer $target
+        Invoke-GPUpdate -Computer $target -Force
 }
 else {
     Write-Host "GPUpdate failed"
