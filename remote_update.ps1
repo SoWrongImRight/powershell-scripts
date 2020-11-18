@@ -7,6 +7,14 @@ if ($target) {
     else {
         Write-Host "$target appears to be offline."   
     }
+    write-host "Check if $target is part of the domain."
+    try {
+        [System.DirectoryServices.ActiveDirectory.Domain]::GetComputerDomain()
+        Write-Host "$target is on the domain."
+    }
+    catch {
+        Write-Host "$targate is not on the domain."
+    }
     Write-Host "Activating winrm.cmd"
     if($?)
     {
