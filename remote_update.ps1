@@ -46,6 +46,12 @@ if($?)
 else {
     Write-Host "Unable to deactivate Remote access"
 }
+if(!(Get-Service -ComputerName $target -Name WinRM)){
+    Write-Host "Unable to verify if service is stopped on $target."
+}
+else {
+    Write-Host "WinRM service is stopped on $target."
+}
 <#
 Write-Host "Entering PSSession"
 if($?)

@@ -33,3 +33,9 @@ if ($target){
     Write-Host "Cleaning up and exiting.  Process will exit due to failure, this is not a bug it is a feature."
     Invoke-Command -ComputerName $target -ScriptBlock {Set-Service WinRM -StartupType Disabled;Stop-Service WinRM}
 }
+if(!(Get-Service -ComputerName $target -Name WinRM)){
+    Write-Host "Unable to verify if service is stopped on $target."
+}
+else {
+    Write-Host "WinRM service is stopped on $target."
+}
