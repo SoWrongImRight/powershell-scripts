@@ -1,4 +1,4 @@
-$target=read-host -Prompt "Input target name"
+$target=read-host -Prompt "Verify you are on a privileged shell. Input target name"
 if ($target){
     write-host "Checking if $target is online."
     if(!(test-netconnection -ComputerName $target)){
