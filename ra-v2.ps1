@@ -15,7 +15,7 @@ if ($target){
     if(!(Invoke-Command -ComputerName $target -ScriptBlock {Test-ComputerSecureChannel})){
         Write-Host "$target is not part of the domain. Attempting to repair"
         try {
-            Invoke-Command -ComputerName $target -ScriptBlock {Test-ComputerSecureChannel}
+            Invoke-Command -ComputerName $target -ScriptBlock {Test-ComputerSecureChannel -Repair}
         }
         catch {
             Write-Host "Unable to repair trust relationship with $target."
