@@ -1,4 +1,4 @@
-<img align="center" src="https://github.com/SoWrongImRight/SoWrongImRight/blob/master/img/powershell.svg">
+<img align="center" width="100" src="https://github.com/SoWrongImRight/SoWrongImRight/blob/master/img/powershell.svg">
 
 ## This is a collection of PowerShell scripts I use for work.
 
